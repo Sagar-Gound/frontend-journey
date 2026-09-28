@@ -4,17 +4,17 @@ export const apiTopics = [
     title: "HTTP Methods & REST",
     description: "The foundation of web APIs. GET fetches data, POST creates, PUT completely replaces, PATCH partially updates, and DELETE removes.",
     code: `const api = {
-  getUsers: () => fetch('/api/users').then(r => r.json()),
+  getUsers: () => fetch('https://jsonplaceholder.typicode.com/users').then(r => r.json()),
   
-  createUser: (data) => fetch('/api/users', { 
+  createUser: (data) => fetch('https://jsonplaceholder.typicode.com/users', { 
     method: 'POST', body: JSON.stringify(data) 
   }),
   
-  updateUser: (id, data) => fetch(\`/api/users/\${id}\`, { 
+  updateUser: (id, data) => fetch(\`https://jsonplaceholder.typicode.com/users/\${id}\`, { 
     method: 'PATCH', body: JSON.stringify(data) 
   }),
   
-  deleteUser: (id) => fetch(\`/api/users/\${id}\`, { 
+  deleteUser: (id) => fetch(\`https://jsonplaceholder.typicode.com/users/\${id}\`, { 
     method: 'DELETE' 
   })
 };`,
@@ -26,7 +26,7 @@ export const apiTopics = [
     description: "Fetch is built-in and uses Promises. Axios is a third-party library that automatically transforms JSON, handles timeouts, and supports request interceptors.",
     code: `// Fetch: Requires manual JSON parsing and error handling
 const fetchUser = async (id) => {
-  const res = await fetch(\`/api/users/\${id}\`);
+  const res = await fetch(\`https://jsonplaceholder.typicode.com/users/\${id}\`);
   if (!res.ok) throw new Error("Network response was not ok");
   return res.json();
 };
@@ -34,7 +34,7 @@ const fetchUser = async (id) => {
 // Axios: Automatic JSON parsing and error throwing
 import axios from 'axios';
 const axiosUser = async (id) => {
-  const { data } = await axios.get(\`/api/users/\${id}\`);
+  const { data } = await axios.get(\`https://jsonplaceholder.typicode.com/users/\${id}\`);
   return data;
 };`,
     insights: "Axios interceptors are incredible for large apps. You can attach auth tokens to every request or globally handle 401 Unauthorized responses to silently refresh tokens—all in one place."
@@ -88,7 +88,7 @@ const UserProfile = ({ id }) => {
   useEffect(() => {
     const controller = new AbortController();
     
-    fetch(\`/api/users/\${id}\`, { signal: controller.signal })
+    fetch(\`https://jsonplaceholder.typicode.com/users/\${id}\`, { signal: controller.signal })
       .then(res => res.json())
       .then(setData)
       .catch(err => {

@@ -4,17 +4,39 @@ import React, { useState, useEffect, useRef } from 'react';
 // 1. HTTP Methods
 const HttpDemo = () => {
   const [log, setLog] = useState([]);
-  const api = (method) => setLog(prev => [...prev, `[${new Date().toLocaleTimeString()}] Executed ${method} /api/users`]);
+  
+  const api = async (method) => {
+    setLog(prev => [...prev, `[${new Date().toLocaleTimeString()}] Executing ${method} to JSONPlaceholder...`]);
+    try {
+      let res;
+      if (method === 'GET') {
+        res = await fetch('https://jsonplaceholder.typicode.com/users/1');
+      } else if (method === 'POST') {
+        res = await fetch('https://jsonplaceholder.typicode.com/users', { 
+          method: 'POST', 
+          body: JSON.stringify({ name: 'New User' }),
+          headers: { 'Content-type': 'application/json; charset=UTF-8' }
+        });
+      } else if (method === 'DELETE') {
+        res = await fetch('https://jsonplaceholder.typicode.com/users/1', { method: 'DELETE' });
+      }
+      const data = await res.json();
+      setLog(prev => [...prev, `✅ ${method} Success! Response: ${JSON.stringify(data).slice(0, 50)}...`]);
+    } catch (err) {
+      setLog(prev => [...prev, `❌ Error: ${err.message}`]);
+    }
+  };
+
   return (
     <div style={{ padding: '20px', background: '#111', borderRadius: '8px' }}>
       <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
-        <button onClick={() => api('GET')} style={{ padding: '8px 16px', background: '#3b82f6', color: '#fff', border: 'none', cursor: 'pointer' }}>GET</button>
-        <button onClick={() => api('POST')} style={{ padding: '8px 16px', background: '#10b981', color: '#fff', border: 'none', cursor: 'pointer' }}>POST</button>
-        <button onClick={() => api('DELETE')} style={{ padding: '8px 16px', background: '#ef4444', color: '#fff', border: 'none', cursor: 'pointer' }}>DELETE</button>
+        <button onClick={() => api('GET')} style={{ padding: '8px 16px', background: '#3b82f6', color: '#fff', border: 'none', cursor: 'pointer' }}>GET (Fetch User)</button>
+        <button onClick={() => api('POST')} style={{ padding: '8px 16px', background: '#10b981', color: '#fff', border: 'none', cursor: 'pointer' }}>POST (Create User)</button>
+        <button onClick={() => api('DELETE')} style={{ padding: '8px 16px', background: '#ef4444', color: '#fff', border: 'none', cursor: 'pointer' }}>DELETE (Remove User)</button>
       </div>
-      <div style={{ height: '100px', overflowY: 'auto', background: '#000', padding: '10px', color: '#a0a0a0', fontFamily: 'monospace' }}>
-        {log.map((l, i) => <div key={i}>{l}</div>)}
-        {!log.length && "Awaiting requests..."}
+      <div style={{ height: '150px', overflowY: 'auto', background: '#000', padding: '10px', color: '#a0a0a0', fontFamily: 'monospace' }}>
+        {log.map((l, i) => <div key={i} style={{ marginBottom: '5px' }}>{l}</div>)}
+        {!log.length && "Click a button to hit the real JSONPlaceholder API..."}
       </div>
     </div>
   );
@@ -64,25 +86,36 @@ const AbortDemo = () => {
   
   useEffect(() => {
     if (reqId === 0) return;
-    setLog(prev => [...prev, `Request ${reqId} started...`]);
-    const timer = setTimeout(() => {
-      setLog(prev => [...prev, `Request ${reqId} COMPLETED.`]);
-    }, 2000);
+    setLog(prev => [...prev, `🚀 Request ${reqId} started (fetching post ${reqId})...`]);
+    
+    const controller = new AbortController();
+    
+    fetch(`https://jsonplaceholder.typicode.com/posts/${reqId}`, { signal: controller.signal })
+      .then(res => res.json())
+      .then(data => {
+        setLog(prev => [...prev, `✅ Request ${reqId} COMPLETED: "${data.title.slice(0, 15)}..."`]);
+      })
+      .catch(err => {
+        if (err.name === 'AbortError') {
+          setLog(prev => [...prev, `🛑 Request ${reqId} ABORTED (Previous request cancelled)!`]);
+        } else {
+          setLog(prev => [...prev, `❌ Request ${reqId} Error: ${err.message}`]);
+        }
+      });
 
     return () => {
-      clearTimeout(timer);
-      setLog(prev => [...prev, `Request ${reqId} ABORTED (Cleanup)!`]);
+      controller.abort();
     };
   }, [reqId]);
 
   return (
     <div style={{ padding: '20px', background: '#111', borderRadius: '8px' }}>
       <button onClick={() => setReqId(r => r + 1)} style={{ padding: '8px 16px', background: '#ec4899', color: '#fff', border: 'none', cursor: 'pointer', marginBottom: '15px' }}>
-        Fetch User {reqId + 1}
+        Fetch Post {reqId + 1}
       </button>
-      <p style={{ fontSize: '0.8rem', color: '#888' }}>Click rapidly! See how previous requests are aborted to prevent race conditions.</p>
-      <div style={{ height: '120px', overflowY: 'auto', background: '#000', padding: '10px', color: '#a0a0a0', fontFamily: 'monospace' }}>
-        {log.map((l, i) => <div key={i} style={{ color: l.includes('ABORTED') ? '#ef4444' : l.includes('COMPLETED') ? '#10b981' : '#fff' }}>{l}</div>)}
+      <p style={{ fontSize: '0.8rem', color: '#888' }}>Click rapidly! Watch how previous real API requests are aborted by the browser before they finish downloading.</p>
+      <div style={{ height: '150px', overflowY: 'auto', background: '#000', padding: '10px', color: '#a0a0a0', fontFamily: 'monospace' }}>
+        {log.map((l, i) => <div key={i} style={{ marginBottom: '5px', color: l.includes('ABORTED') ? '#ef4444' : l.includes('COMPLETED') ? '#10b981' : '#fff' }}>{l}</div>)}
       </div>
     </div>
   );
