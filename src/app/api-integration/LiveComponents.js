@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 // 1. HTTP Methods
 const HttpDemo = () => {
   const [log, setLog] = useState([]);
-  const api = (method) => setLog(prev => [...prev, \`[\${new Date().toLocaleTimeString()}] Executed \${method} /api/users\`]);
+  const api = (method) => setLog(prev => [...prev, `[${new Date().toLocaleTimeString()}] Executed ${method} /api/users`]);
   return (
     <div style={{ padding: '20px', background: '#111', borderRadius: '8px' }}>
       <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
@@ -39,7 +39,7 @@ const AuthDemo = () => {
   const [auth, setAuth] = useState(false);
   return (
     <div style={{ padding: '20px', background: '#111', borderRadius: '8px' }}>
-      <div style={{ padding: '15px', background: auth ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: \`1px solid \${auth ? '#10b981' : '#ef4444'}\`, color: auth ? '#10b981' : '#ef4444', marginBottom: '15px' }}>
+      <div style={{ padding: '15px', background: auth ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: `1px solid ${auth ? '#10b981' : '#ef4444'}`, color: auth ? '#10b981' : '#ef4444', marginBottom: '15px' }}>
         Status: {auth ? "Authenticated (HTTP-Only Cookie active)" : "Unauthorized (No valid cookie found)"}
       </div>
       <button onClick={() => setAuth(!auth)} style={{ padding: '8px 16px', background: '#f59e0b', color: '#000', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
@@ -64,14 +64,14 @@ const AbortDemo = () => {
   
   useEffect(() => {
     if (reqId === 0) return;
-    setLog(prev => [...prev, \`Request \${reqId} started...\`]);
+    setLog(prev => [...prev, `Request ${reqId} started...`]);
     const timer = setTimeout(() => {
-      setLog(prev => [...prev, \`Request \${reqId} COMPLETED.\`]);
+      setLog(prev => [...prev, `Request ${reqId} COMPLETED.`]);
     }, 2000);
 
     return () => {
       clearTimeout(timer);
-      setLog(prev => [...prev, \`Request \${reqId} ABORTED (Cleanup)!\`]);
+      setLog(prev => [...prev, `Request ${reqId} ABORTED (Cleanup)!`]);
     };
   }, [reqId]);
 
@@ -164,7 +164,7 @@ const UploadDemo = () => {
     <div style={{ padding: '20px', background: '#111', borderRadius: '8px' }}>
       <button onClick={upload} style={{ padding: '8px 16px', background: '#f59e0b', color: '#000', border: 'none', cursor: 'pointer', marginBottom: '15px' }}>Upload File</button>
       <div style={{ width: '100%', background: '#333', height: '10px', borderRadius: '5px', overflow: 'hidden' }}>
-        <div style={{ width: \`\${progress}%\`, height: '100%', background: '#10b981', transition: 'width 0.3s' }}></div>
+        <div style={{ width: `${progress}%`, height: '100%', background: '#10b981', transition: 'width 0.3s' }}></div>
       </div>
       <p style={{ color: '#aaa', fontSize: '0.85rem' }}>Uploaded: {progress}% (Tracked via Axios onUploadProgress)</p>
     </div>
