@@ -71,7 +71,51 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-            
+
+            <Link href="/nextjs" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(220, 220, 220, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>▲</div>
+                <h3 style={{ color: '#ededed' }}>Next.js Deep Dive</h3>
+                <p>Master the App Router, Server Components, advanced routing, caching, and modern React architectures.</p>
+                <div style={{ marginTop: '1.5rem', color: '#ededed', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/typescript" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(49, 120, 198, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>TS</div>
+                <h3 style={{ color: '#3178c6' }}>TypeScript Patterns</h3>
+                <p>Learn advanced typing, generics, utility types, and strict type safety within the React ecosystem.</p>
+                <div style={{ marginTop: '1.5rem', color: '#3178c6', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/forms" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(236, 72, 153, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>📝</div>
+                <h3 style={{ color: '#ec4899' }}>Modern Forms</h3>
+                <p>Master form state, schema validation with Zod, and API error handling using React Hook Form.</p>
+                <div style={{ marginTop: '1.5rem', color: '#ec4899', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/ui-engineering" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(139, 92, 246, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>🎨</div>
+                <h3 style={{ color: '#a78bfa' }}>UI Engineering</h3>
+                <p>Learn core CSS fundamentals, responsive layouts, overlay components, and data presentation.</p>
+                <div style={{ marginTop: '1.5rem', color: '#a78bfa', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
             <Link href="/modern-architecture" style={{ textDecoration: 'none' }}>
               <div className={styles.card} style={{ borderColor: 'rgba(16, 185, 129, 0.3)', transition: 'all 0.3s ease' }}>
                 <div className={styles.cardIcon}>🏗️</div>
