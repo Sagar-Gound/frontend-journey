@@ -116,6 +116,50 @@ export default function Home() {
               </div>
             </Link>
 
+            <Link href="/performance" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(234, 179, 8, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>⚡</div>
+                <h3 style={{ color: '#eab308' }}>Web Performance</h3>
+                <p>Master React rendering, bundle optimization, Core Web Vitals, and debugging tooling.</p>
+                <div style={{ marginTop: '1.5rem', color: '#eab308', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/seo" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(16, 185, 129, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>🔍</div>
+                <h3 style={{ color: '#10b981' }}>Search Engine Optimization</h3>
+                <p>Dominate search with structured data, dynamic metadata, sitemaps, and rendering strategies.</p>
+                <div style={{ marginTop: '1.5rem', color: '#10b981', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/accessibility" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(99, 102, 241, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>👁️</div>
+                <h3 style={{ color: '#6366f1' }}>Accessibility (a11y)</h3>
+                <p>Master WCAG, ARIA, semantic HTML, and advanced focus management for inclusive design.</p>
+                <div style={{ marginTop: '1.5rem', color: '#6366f1', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/security" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(239, 68, 68, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>🛡️</div>
+                <h3 style={{ color: '#ef4444' }}>Web Security</h3>
+                <p>Defend against XSS, CSRF, and master AuthN/AuthZ, secure tokens, and rate limiting.</p>
+                <div style={{ marginTop: '1.5rem', color: '#ef4444', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
+
             <Link href="/modern-architecture" style={{ textDecoration: 'none' }}>
               <div className={styles.card} style={{ borderColor: 'rgba(16, 185, 129, 0.3)', transition: 'all 0.3s ease' }}>
                 <div className={styles.cardIcon}>🏗️</div>
@@ -148,7 +192,19 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+
+            <Link href="/realtime" style={{ textDecoration: 'none' }}>
+              <div className={styles.card} style={{ borderColor: 'rgba(217, 70, 239, 0.3)', transition: 'all 0.3s ease' }}>
+                <div className={styles.cardIcon}>🔄</div>
+                <h3 style={{ color: '#d946ef' }}>Real-Time & Background</h3>
+                <p>Break free from request/response. Master WebSockets, Server-Sent Events, Webhooks, and background jobs.</p>
+                <div style={{ marginTop: '1.5rem', color: '#d946ef', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  Start Learning <span>→</span>
+                </div>
+              </div>
+            </Link>
           </div>
+
         </section>
 
         {/* Skills Section */}

@@ -1,0 +1,165 @@
+.container {
+  min-height: 100vh;
+  background-color: #050505;
+  color: #ededed;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 4rem 2rem;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(20, 184, 166, 0.15) 0%, transparent 50%);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #a1a1aa;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(10, 20, 15, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardTitle::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background: rgba(16, 185, 129, 0.1);
+  color: #6ee7b7;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d4d4d8;
+  margin-bottom: 1rem;
+}
+
+.codeBlock {
+  background: #05100a;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85rem;
+  color: #a7f3d0;
+  margin-bottom: 1.5rem;
+}
+
+.codeBlock code {
+  white-space: pre;
+}
+
+.insights {
+  background: rgba(16, 185, 129, 0.05);
+  border-left: 3px solid #10b981;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  margin-top: auto;
+}
+
+.insightsTitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6ee7b7;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.insightsText {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #a1a1aa;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+}
