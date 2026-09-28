@@ -1,0 +1,134 @@
+.container {
+  min-height: 100vh;
+  background-color: #050505;
+  color: #e0e0e0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 4rem 2rem;
+  background-image: 
+    radial-gradient(circle at 50% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.backButton:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.header {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section {
+  background: rgba(25, 25, 25, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHeader {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.codeBlock {
+  background: #0d0d0d;
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9rem;
+  color: #a5d6ff;
+  margin: 0;
+  flex: 1;
+}
+
+.codeBlock code {
+  white-space: pre;
+}
+
+.outputArea {
+  padding: 2rem;
+  background: #111;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #e0e0e0;
+}
+
+.insights {
+  margin-top: 2rem;
+  background: rgba(236, 72, 153, 0.05);
+  border-left: 4px solid #ec4899;
+  padding: 1.5rem 2rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.insightsTitle {
+  font-size: 1.1rem;
+  color: #ec4899;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.insightsText {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #d0d0d0;
+}
